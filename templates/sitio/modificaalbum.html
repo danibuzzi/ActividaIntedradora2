@@ -1,0 +1,106 @@
+{% include 'sitio/cabecera.html' %}
+
+
+
+<div class="p5 bg-light">
+    <div class="container">
+        <br/>
+        <div class="card-header">
+          Modificacion de album
+             
+
+        </div>
+       
+        <div class="card-body">
+            <form action="/update" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                
+                  {% for al in album %} 
+                  <div class="form-group col-md-2">
+                    <label for="codigo">Codigo</label>
+                    <input type="text" class="form-control" value="{{al[1]}}" name="txtcodigo" id="codigo" placeholder="Codigo" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="txtnombre" value="{{al[2]}}" id="nombre" placeholder="Nombre" required>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="interprete">Interprete</label>
+                    <input type="text" class="form-control" name="txtinterprete" id="interprete" value="{{al[3]}}" placeholder="Interprete" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="genero">Genero</label>
+                  <input type="text" class="form-control" id="genero" name="txtgenero" value="{{al[4]}}" placeholder="Genero" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="cantidad">Cantidad temas</label>
+                    <input type="number" class="form-control" id="cantidad" value="{{al[5]}}" name="txttemas" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="discografica">Discografica</label>
+                    <input type="text" class="form-control" id="discografica" name="txtdiscografica" value="{{al[5]}}" required>
+                  </div>  
+
+                  <div class="form-group col-md-2">
+                    <label for="formato">Formato</label>
+                    <input type="text" class="form-control" id="formato" name="txtformato" value="{{al[6]}}" required>
+                  </div>  
+
+                  <div class="form-group col-md-3">
+                    <label for="fecha">Fecha lanzamiento</label>
+                    <input type="date" class="form-control" id="fecha" name="txtfecha" value="{{al[8]}}" required>
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <label for="precio">Precio</label>
+                    <input type="decimal" class="form-control" id="precio" name="txtprecio" value="{{al[9]}}" required>
+                  </div> 
+                  <div class="form-group col-md-3">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" class="form-control" id="cantidad" name="txtcantidad" value="{{al[10]}}" required>
+                  </div> 
+                  <div class="form-group col-md-3">
+                    <label for="caratula">Caratula</label>
+                    <input type="text" class="form-control" id="caratula" name="txtcaratula" value="{{al[11]}}">
+                  </div> 
+                 {% endfor%}
+                  <!--<div class="form-group col-md-2">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>-->
+                <button type="submit" class="btn btn-primary">Modificar album</button>
+
+
+              </form> 
+
+
+        </div>
+     <div class="card-footer text-muted>
+
+
+     </div>
+    </div>
+
+
+</div>
+
+{% include 'sitio/pie.html' %}

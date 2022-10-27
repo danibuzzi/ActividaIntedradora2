@@ -1,0 +1,127 @@
+{% include 'sitio/cabecera.html' %}
+
+
+
+<div class="p5 bg-light">
+    <div class="container">
+        <br/>
+        <div class="card-header">
+           Alta de album 
+             
+
+        </div>
+       
+        <div class="card-body">
+            <form action="altaalbum/guardar" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="codigo">Codigo</label>
+                    <input type="text" class="form-control" name="txtcodigo" id="codigo" placeholder="Codigo" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="txtnombre" id="nombre" placeholder="Nombre" required>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="interprete">Interprete</label>
+                    <select id="inteprete" name="txtinterprete" class="form-control" required>
+                      <option selected>Seleccione el interprete ...</option>
+                      {% for interprete in interpretes%}
+                      <option value="{{interprete[0]}}">{{interprete[1]}} {{interprete[2]}}</option>
+                      {% endfor%}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="genero">Genero</label>
+                  <select id="genero" name="txtgenero" class="form-control" required>
+                    <option selected>Seleccione el Genero ...</option>
+                    {% for genero in generos%}
+                    <option value="{{genero[0]}}">{{genero[1]}}</option>
+                    {% endfor%}
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="cantidad">Cantidad temas</label>
+                    <input type="number" class="form-control" id="cantidad" name="txttemas" min="0" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="discografica">Discográfica</label>
+                    <select id="discografica" name="txtdiscografica" class="form-control" required>
+                      <option selected>Seleccione discografica ...</option>
+                      {% for discografica in discograficas%}
+                      <option value="{{discografica[0]}}">{{discografica[1]}}</option>
+                      {% endfor%}
+                    </select>
+                  
+                  </div>  
+
+                  <div class="form-group col-md-3">
+                    <label for="formato">Formato</label>
+                    <select id="formato" name="txtformato" class="form-control" required>
+                      <option selected>Seleccione el formato ...</option>
+                      {% for formato in formatos%}
+                      <option value="{{formato[0]}}">{{formato[1]}}</option>
+                      {% endfor%}
+                    </select>
+        
+                  </div>  
+
+                  <div class="form-group col-md-3">
+                    <label for="fecha">Fecha lanzamiento</label>
+                    <input type="date" class="form-control" id="fecha"  name="txtfecha" required>
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" min="0.00" id="precio" name="txtprecio" required>
+                  </div> 
+                  <div class="form-group col-md-3">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" class="form-control" id="cantidad" min="0" name="txtcantidad" required>
+                  </div> 
+                  <div class="form-group col-md-7">
+                    <label for="caratula">Caratula</label>
+                    <input type="text"  class="form-control" id="caratula" name="txtcaratula">
+                  </div> 
+                  
+    
+                  <!--<div class="form-group col-md-2">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>-->
+                <button type="submit" class="btn btn-primary">Dar alta</button>
+
+
+              </form> 
+
+
+        </div>
+     <div class="card-footer text-muted>
+
+
+     </div>
+    </div>
+
+
+</div>
+
+{% include 'sitio/pie.html' %}

@@ -1,0 +1,57 @@
+{% include 'sitio/cabecera.html'%}
+
+
+
+<div class="p5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br/>
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Interprete</th>
+                            <th>Genero</th>
+                            <th>Discográfica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              
+                          {% for album in albums %}
+                            <tr>
+                                <td>{{album[0]}}</td>
+                                <td>{{album[1]}}</td>
+                                <td>{{album[2]}} {{album[3]}}</td>
+                                <td>{{album[4]}}</td>
+                                <td>{{album[5]}}</td>
+                                <td>
+                                    <form action="listaalbumes/borrar" method="post">
+                                        <input type="hidden" value="{{album[0]}}" name="txtid" id="txtid">
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                            
+                                </td>
+                                 <td>
+                                    <form action="listaalbumes/modificar" method="post">
+                                        <input type="hidden" value="{{album[0]}}" name="txtid2">
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                    </form>
+
+                                 </td>   
+ 
+
+                            </tr>
+                          {% endfor %}      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+{% include 'sitio/pie.html' %}

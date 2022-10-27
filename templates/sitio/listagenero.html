@@ -1,0 +1,43 @@
+{% include 'sitio/cabecera.html'%}
+
+
+
+<div class="p5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br/>
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Interprete</th>
+                            <th>Genero</th>
+                            <th>Discográfica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              
+                          {% for genero in generos %}
+                            <tr>
+                                <td>{{genero[0]}}</td>
+                                <td>{{genero[1]}}</td>
+                                <td>{{genero[2]}} {{genero[3]}}</td>
+                                <td>{{genero[4]}}</td>
+                                <td>{{genero[5]}}</td>
+                                <td><a href="">Eliminar</a></td>
+                                <td><a href="">Editar</a></td>
+                            </tr>
+                          {% endfor %}      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+{% include 'sitio/pie.html' %}
