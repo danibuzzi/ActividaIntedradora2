@@ -1,2 +1,2 @@
-# ActividaIntegradora2
+# Actividad Integradora2
 
