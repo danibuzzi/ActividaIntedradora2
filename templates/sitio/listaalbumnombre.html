@@ -2,8 +2,7 @@
 
 
 
-<div class="p5 bg-light">
-    <div class="container">
+
         <div class="row">
             <div class="col-12">
                 <br/>
@@ -15,28 +14,66 @@
                             <th>Interprete</th>
                             <th>Genero</th>
                             <th>Discográfica</th>
+                            <th>Formato</th>
+                            <th></th>
+                            <th>Acciones
+                                
+                            </th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
               
                           {% for album in albums %}
                             <tr>
-                                <td>{{album[0]}}</td>
                                 <td>{{album[1]}}</td>
-                                <td>{{album[2]}} {{album[3]}}</td>
-                                <td>{{album[4]}}</td>
-                                <td>{{album[5]}}</td>
+                                <td>{{album[2]}}</td>
+                                <td>{{album[4]}}  {{album[5]}}</td>
+                                <td>{{album[7]}}</td>
+                                <td>{{album[9]}}</td>
+                                <td>{{album[13]}}</td>
+
                                 <td>
-                                    <form action="listaalbumes/borrar" method="post">
-                                        <input type="hidden" value="{{album[0]}}" name="txtid" id="txtid">
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    <form action="listaalbumes/detalle/{{album[0]}}" method="post">
+                                        <input type="hidden" value="{{album[0]}}" name="txtid3">
+                                        <button type="submit" class="btn btn-sm btn-success">Detalle</button>
                                     </form>
+
+                                 </td>   
+                                <td>
+                                    <form action="listaalbumes/borrar/{{album[0]}}" method="post">
+                                        <input type="hidden" value="{{album[0]}}" name="txtid" id="txtid">
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" 
+                                        data-target="#eliminarmodal">Eliminar</button>
+
+                                        <div class="modal fade" id="eliminarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLongTitle">Advertencia</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <h6>¿Realmente desea eliminar el album?</h6>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                  <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                     
                             
                                 </td>
                                  <td>
-                                    <form action="listaalbumes/modificar" method="post">
+                                    <form action="listaalbumes/modificar/{{album[0]}}" method="post">
                                         <input type="hidden" value="{{album[0]}}" name="txtid2">
-                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Editar</button>
                                     </form>
 
                                  </td>   
@@ -49,9 +86,6 @@
             </div>
         </div>
 
-    </div>
 
-
-</div>
 
 {% include 'sitio/pie.html' %}

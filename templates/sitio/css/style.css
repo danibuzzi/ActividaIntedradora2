@@ -1,0 +1,73 @@
+
+header{
+
+    background-color: rgb(85, 117, 92);
+
+}
+
+nav {
+    background-color: rgb(233, 250, 246);
+    border-color: black;
+    border: 2pt;
+
+}
+.nav-link{
+    color:black;
+
+
+}
+
+.table-stripped{
+    border: 2pt;
+    border-color: black;
+
+}
+
+body{
+    background-color: rgb(233, 230, 227);
+
+}
+
+p5{
+background-color:rgb(233, 230, 227);
+
+}
+
+thead{
+    background-color:bisque;
+}
+
+tbody{
+    background-color:rgb(239, 240, 235);
+    text-decoration: double;
+
+}
+
+.container {
+   width: 100%;
+   background-color:rgb(233, 230, 227);
+
+  
+}
+
+
+.card-header {
+    
+    background-color: bisque;
+
+}
+
+label{
+
+ font-size: 15px;
+ font-weight:bold ;
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(219, 157, 136);
+    color: rgb(24, 21, 21);
+    bottom: auto;
+    
+  }
