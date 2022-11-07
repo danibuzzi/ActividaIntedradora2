@@ -3,12 +3,15 @@ from asyncio.windows_events import NULL
 import os
 import controlador
 import modelo
+
 from flask import Flask
-from flask import render_template,request,redirect
+from flask import render_template,request,redirect,flash
 from flask import send_from_directory
 
 
 app=Flask(__name__)
+
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # definir ruta para las imagenes
 
@@ -42,17 +45,29 @@ def boots(archivoboot):
 @app.route('/')
 
 def inicio():
-    return render_template('sitio/index.html')
+    albumes=controlador.ListarAlbumesFecha()
+
+    return render_template('sitio/index.html',albums=albumes)
 
 
-#ruta para lista de albums por artista
+#ruta para lista de albums sin ordenar
 
 @app.route('/listaalbumes')
 
 def listaalbumes():
-    albumes=controlador.ListarAlbumesPorArtistas() 
+    albumes=controlador.ListarAlbumes() 
   
     return render_template('sitio/listaalbumes.html',albums=albumes)
+
+
+#ruta para lista de albums por artista
+
+@app.route('/listaalbumesartista')
+
+def listaalbumesartista():
+    albumes=controlador.ListarAlbumesPorArtistas() 
+  
+    return render_template('sitio/listaalbumesartista.html',albums=albumes)
   
 
 # ruta para lista de albums por genero
@@ -106,11 +121,15 @@ def guardar_album():
     _fecha=request.form['txtfecha']
     _precio=request.form['txtprecio']
     _cantidad=request.form['txtcantidad']
+  
     _caratula=request.files['txtcaratula']
 
     
     if _caratula.filename!="":
-        _caratula.save("templates/sitio/img/"+_caratula.filename)   
+        _caratula.save("templates/sitio/img/"+_caratula.filename)  
+
+    if  _caratula.filename=="":
+         _caratula.filename="sin_imagen.png"   
 
     print("Interprete es ",_interprete)  
     controlador.InsertarAlbum(_codalbum,_nombre,_interprete,_genero,_temas,_discografica,
@@ -154,22 +173,25 @@ def update_album(id):
      precio=request.form['txtprecio']
 
      cantidad=request.form['txtcantidad']
-    
+
      caratula=request.files['txtcaratula']
+     caratulatext=request.form.get('txtpath')
+     print("trae ",caratulatext)
 
-    
      if caratula.filename!="":
-        caratula.save("templates/sitio/img/"+caratula.filename) 
+       caratula.save("templates/sitio/img/"+caratula.filename) 
+   
+   
 
- 
 
      con=modelo.Conectar()
      edicionAlbum=modelo.Album(0,cod_album,nombre,id_interprete,id_genero,cant_temas,
-     id_discografica,id_formato,fech_lanzamiento,precio,cantidad,caratula.filename)
+     id_discografica,id_formato,fech_lanzamiento,precio,cantidad,caratulatext)
      con.ModificarAlbum(edicionAlbum,id)
- 
- 
-     print('Album modficado')
+
+
+     #print('Album modficado')
+  
      return redirect('/listaalbumes')
 
 
@@ -180,13 +202,32 @@ def modificaalbum():
     return redirect('sitio/index.html') 
 
 
+#ruta para mostrar la informacion detallada de un album 
+
+@app.route('/listaalbumes/detalle/<int:id>',methods=['POST'])
+def detallaralbum(id):
+
+    if request.form.items=='NULL':
+        return render_template('sitio/error.html')
+    else:
+        album=controlador.BuscarAlbumCodigo(id)
+
+        interprete=controlador.ListarInterpretes()
+        discografica=controlador.ListarDiscograficas()
+        formato= controlador.ListarFormatos()
+        genero = controlador.ListarGeneros()
+
+        return render_template('sitio/detallealbum.html',interpretes=interprete,
+        discograficas=discografica,formatos=formato,generos=genero,album=album) 
+
+
 #ruta para el borrado de un album desde el listado de albums
 
 @app.route('/listaalbumes/borrar/<int:id>',methods=['POST'])
 
 def borrraralbum(id):
   
-    print(id)
+    print("id album borrar",id)
     controlador.EliminarAlbum(id)
     return redirect('/listaalbumes')
 

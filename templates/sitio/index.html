@@ -3,8 +3,38 @@
 
 
 
-        <h1>Hola estoy en index</h1>
+<br>
+<br>
+<br>
 
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+  {%for album in albums%}
+  <div class="col">
+    <div class="card h-100">
+          {%if album[10]=='' or album[10]=='NULL' or album[10]=='None' %}
+          <img src="/img/sin_imagen.png" width="40%" heigth="60%" class="card-img-top" alt="Imagen del album">
+          {%else%}
+  
+          <img src="/img/{{album[10]}}" class="card-img-top" alt="Imagen del album">
+         
+          {%endif%}
+          <div class="card-body bg-light border-top">
+  
+                  <p class="card-text text-center" style="color:blue ; font-size: medium; font-weight: bold;">{{album[9]}}</p>
+                  <p class="card-text text-center" style="color: red ; font-size: larger; font-weight: bold;">{{album[2]}}</p>
+                  <p class="card-text text-center" style="color:rgb(15, 14, 14) ; font-size: large; font-weight: bold;">{{album[4]}} {{album[3]}}</p>
+                  <p class="card-text text-center" style="color:teal ; font-size: larger; font-weight: bold;">ARS  {{album[7]}}</p>
+        
+          </div>
+        
+
+    </div>
+    
+  </div>
+  {%endfor%}
+
+</div>
 
 
 {% include 'sitio/pie.html' %}

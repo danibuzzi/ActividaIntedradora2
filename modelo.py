@@ -1,5 +1,6 @@
 import mysql.connector
 
+
 class Conectar():
 
     def __init__(self) -> None:
@@ -12,14 +13,31 @@ class Conectar():
                 db = 'disqueria'
 
             )
-            #if self.conexion.is_connected():
-             #   print('Conexion establecida')    
+          
         except mysql.connector.Error as descripcionError:
             print("¡No se conectó!",descripcionError)
             
-           
-    
+
     def ListarAlbumes(self):
+        if self.conexion.is_connected():
+
+            try:
+                cursor = self.conexion.cursor()
+                senteciaSQL = "SELECT id_album,cod_album, album.nombre, interprete.nombre, interprete.apellido, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo,caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero"
+                cursor.execute(senteciaSQL)
+                resultados = cursor.fetchall()
+                self.conexion.close()
+                return resultados
+
+
+            except mysql.connector.Error as descripcionError:
+                print("¡No se conectó!",descripcionError)
+
+
+
+
+    
+    def ListarAlbumesArtista(self):
         if self.conexion.is_connected():
 
             try:
@@ -33,7 +51,23 @@ class Conectar():
 
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
-            
+
+
+        
+    def ListarAlbumesFecha(self):
+        if self.conexion.is_connected():
+
+            try:
+                cursor = self.conexion.cursor()
+                senteciaSQL = "SELECT id_album,cod_album, album.nombre, interprete.nombre, interprete.apellido, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo,caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By album.fec_lanzamiento desc limit 3"
+                cursor.execute(senteciaSQL)
+                resultados = cursor.fetchall()
+                self.conexion.close()
+                return resultados
+
+
+            except mysql.connector.Error as descripcionError:
+                print("¡No se conectó!",descripcionError)        
               
            
     def ListarPorGenero(self):
@@ -43,7 +77,7 @@ class Conectar():
                 senteciaSQL = "SELECT id_album,cod_album, album.nombre, interprete.nombre, interprete.apellido, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By genero.nombre asc"
                 cursor.execute(senteciaSQL)
                 resultados = cursor.fetchall()
-                #self.conexion.close()
+                self.conexion.close()
                 return resultados
 
 
@@ -86,7 +120,7 @@ class Conectar():
                 sentenciaSQL = "SELECT * from interprete"
                 cursor.execute(sentenciaSQL)
                 resultados = cursor.fetchall()
-                #self.conexion.close()
+                self.conexion.close()
                 return resultados
 
             except mysql.connector.Error as descripcionError:
@@ -155,7 +189,6 @@ class Conectar():
 
 
     
-    #def ModificarAlbum(self,nombre,cod_album):
 
     def ModificarAlbum(self,album,id):
         if self.conexion.is_connected():
@@ -164,7 +197,7 @@ class Conectar():
                 ids=str(id)
                
   
-                sentenciaSQL="UPDATE album SET cod_album = %s, nombre= %s, id_interprete = %s, id_genero = %s, cant_temas = %s, id_discografica = %s, id_formato = %s, fec_lanzamiento = %s, precio = %s, cantidad = %s, caratula = %s WHERE id_album ="+str(id)
+                sentenciaSQL="UPDATE album SET cod_album = %s, nombre= %s, id_interprete = %s, id_genero = %s, cant_temas = %s,id_discografica = %s, id_formato = %s, fec_lanzamiento = %s, precio = %s, cantidad = %s, caratula = %s WHERE id_album ="+str(id)
 
 
                 data = (
@@ -180,16 +213,14 @@ class Conectar():
                 album.getCantidad(),
                 album.getCaratula())
           
-          
-          
-
                
                 cursor.execute(sentenciaSQL,data)
                     
                 self.conexion.commit()
                 self.conexion.close()
                 print("Álbum modificado correctamente")
-
+             
+             
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
                 
@@ -213,7 +244,7 @@ class Conectar():
                 sentenciaSQL = "SELECT * from genero"
                 cursor.execute(sentenciaSQL)
                 resultados = cursor.fetchall()
-                #self.conexion.close()
+                self.conexion.close()
                 return resultados
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
@@ -225,7 +256,7 @@ class Conectar():
                 sentenciaSQL = "SELECT * from discografica"
                 cursor.execute(sentenciaSQL)
                 resultados = cursor.fetchall()
-                #self.conexion.close()
+                self.conexion.close()
                 return resultados
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
@@ -237,7 +268,7 @@ class Conectar():
                 sentenciaSQL = "SELECT * from formato"
                 cursor.execute(sentenciaSQL)
                 resultados = cursor.fetchall()
-                #self.conexion.close()
+                self.conexion.close()
                 return resultados
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
@@ -251,8 +282,7 @@ class Conectar():
                     sentenciaSQL = "DELETE from album WHERE id_album=%s"
                     data=(id,)
                     cursor.execute(sentenciaSQL,data)
-                    #cursor.execute(sentenciaSQL,(cod_album))
-                   # print('codigo',cod_album)
+            
                     self.conexion.commit()
                     self.conexion.close()
      

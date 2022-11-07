@@ -1,18 +1,9 @@
-function llenarcaratula(){
-var selector=document.getElementsByName("txtcaratula").files[0];
-alert(selector);
-var contenedor=document.getElementsByName("txtcaratula2").innerText;
-contenedor=selector;
-alert(contenedor);
-//
 
 
-}
-
-// 
+// Al seleccionar un archivo del input de archivos rellena el campo caratula del formulario
 
 function mostrarSeleccion(){
-    //const output1 = document.getElementsByName('txtcaratula2');
+
     const muestraArchivo = document.querySelector('.caratula2');
     const selectorArchivos = document.querySelector('#caratula');
     //const output = document.querySelector('.output');
@@ -23,8 +14,29 @@ function mostrarSeleccion(){
         output.value += `\n${file.name}`;
       }*/
     //});
- muestraArchivo.value="";     
- muestraArchivo.value += `\n${selectorArchivos.files[0].name}`;
 
+//Si hemos seleccionado un archivo completamos el input de archivo
+
+ if (selectorArchivos.files[0]!=""){
+
+     muestraArchivo.value="";     
+     muestraArchivo.value =selectorArchivos.files[0].name;
+    
+    }
+}
+
+//Si se confirma el borrado del album (valor true) se retorna el valor para proceder con la operacion
+// sino se retorna false para cancelarla.  
+
+function advertenciaBorrado(){
+    let confirmaBorrado= confirm('¿Esta seguro de eliminar los datos del album?');
+    print (confirmaBorrado.value);
+    if (confirmaBorrado==true){
+        return true;
+
+    }else{
+        return false;
+    }
 
 }
+

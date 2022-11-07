@@ -50,6 +50,19 @@ tbody{
   
 }
 
+img{
+
+border-radius: 14px;
+border-color: blue;
+
+}
+
+.textoform{
+
+ font-size: medium;
+ font-weight: bolder;
+
+}
 
 .card-header {
     

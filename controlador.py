@@ -22,14 +22,20 @@ def ListarGeneros():
     return con.ListarGenero()   
 
 
-
-def ListarAlbumesPorArtistas():
+def ListarAlbumes():
     con = modelo.Conectar()
     return con.ListarAlbumes()
 
+
+def ListarAlbumesPorArtistas():
+    con = modelo.Conectar()
+    return con.ListarAlbumesArtista()
+
     
  
- 
+def ListarAlbumesFecha():
+    con=modelo.Conectar()
+    return con.ListarAlbumesFecha()
 
 def ListarAlbumesPorGenero():
     con = modelo.Conectar()
