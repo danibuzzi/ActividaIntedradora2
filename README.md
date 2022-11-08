@@ -35,7 +35,7 @@ Requerimientos de funcionamiento del programa:
 
 Para el uso del programa se requiere instalar previamente las siguientes librerias:
 
-- Framework Flask --- pip install Flask
+- Framework Flask --- pip install flask
 - Conector a MySql Server para python --- pip install mysql-connector-python
 
  Para cargar la base de datos se debe generar con el script disqueria_script_valido.sql. Por simplicidad se recomienda para la prueba local del sistema, instalar y ejecutar la aplicacion XAMPP , levantando  el servidor web Apache y el servidor de base de datos MySql Server y ejecutar el administrador para la base de datos (phpmyadmin por ejemplo) ,y luego generar la base de datos.
