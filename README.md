@@ -8,19 +8,12 @@ Torres, Brenda           --  torresbrenda333@gmail.com
 
 
 
-En esta actividad integradora hemos volcado los conocimientos adquiridos durante el cursado del módulo de programación, integrando el  lenguaje python y la gestión de bases de datos y aprendizajes resultantes de nuestra investigación.
+En esta actividad integradora hemos volcado los conocimientos adquiridos durante el cursado del módulo de programador (programacion, bases de datos y proyecto integrador) y los  aprendizajes resultantes de nuestra investigación.
+
 El trabajo presentado consiste en una aplicación web para una disqueria.
 
-La aplicación para la disqueria Formosa proporciona las siguientes funcionalidades:
 
-- Muestra de los datos principales de los 3 albumes con  fecha de lanzamiento más reciente.
-- Gestion de los álbumes (alta , modificación y eliminación de datos del álbum)
-- Listado de álbumes cargados sin ordenamiento.
-- Listado de álbumes ordenados por intérprete.
-- Listado de álbumes ordenados por género musical.
-- Búsqueda de álbum por nombre del álbum.
-
-Tecnologías empleadas:
+Tecnologías y lenguajes empleados:
 
 - Python (como lenguaje de programación base)
 - Bases de datos MySql Server (para el almacenamiento y la gestión de los datos)
@@ -33,21 +26,28 @@ Tecnologías empleadas:
 
 Requerimientos de funcionamiento del programa:
 
-Para el uso del programa se requiere instalar previamente las siguientes librerias:
+Una vez descargado el codigo fuente, para el uso del programa se requiere instalar previamente las siguientes librerias:
 
 - Framework Flask --- pip install flask
 - Conector a MySql Server para python --- pip install mysql-connector-python
 
- Para cargar la base de datos se debe generar con el script disqueria_script_valido.sql. Por simplicidad se recomienda para la prueba local del sistema, instalar y ejecutar la aplicacion XAMPP , levantando  el servidor web Apache y el servidor de base de datos MySql Server y ejecutar el administrador para la base de datos (phpmyadmin por ejemplo) ,y luego generar la base de datos.
+Por simplicidad se recomienda, para la prueba local del sistema, instalar y ejecutar la aplicacion XAMPP .Procedemos a iniciar  el servidor web Apache y el servidor de base de datos MySql Server y ejecutamos el administrador o gestor para la base de datos (phpmyadmin que ya incorpora XAMP) ,y mediante el uso del script disqueria_script_valido.sql generamos la base de datos.
 
-Una vez cumplido estos requerimientos se ejecuta el programa con el comando: --  python app.py  
-Se carga  en el software navegador de internet el sitio escribiendo la dirección http://localhost:5000/.
-
-
-En cuanto a la programacion del sitio se ha seguido el paradigma de programación  orientado a objetos (P.O.O.) ,y se ha organizado la aplicacion mediante el uso del patrón de diseño MVC (modelo- vista- controlador) que permite dividir el código en capas , cada de ellas una con responsabilidad específica}.Este enfoque promueve una mejor organización del código, facilitando la detección y depuración de errores y las tareas de mantenimiento , incluidas la mejora del código y el agregado de nuevas funcionalidades.
+Una vez cumplido estos requerimientos anteriores se ejecuta el programa con el comando: --  python app.py.  
+Para visualizar la aplicacion web es preciso abrir el software navegador de internet y dirigirse a la direccion  http://localhost:5000/
 
 
+En la codificación del sitio se ha seguido el paradigma de programación  orientado a objetos (P.O.O.) ,y se ha organizado el código de la aplicacion mediante el uso del patrón de diseño MVC (modelo- vista- controlador) que permite las dividir tareas en capas , cada de ellas una con responsabilidad específica}.Este enfoque promueve una mejor organización del programa, facilitando la detección y depuración de errores y las tareas de mantenimiento , incluidas la mejora del código y el agregado de nuevas funcionalidades.
 
+
+La aplicación para la disqueria Formosa proporciona las siguientes funcionalidades:
+
+- Muestra de los datos principales de los 3 albumes con fecha de lanzamiento más reciente.
+- Gestion de los álbumes (alta , modificación y eliminación de datos del álbum)
+- Listado de álbumes ordenados por id de album.
+- Listado de álbumes ordenados por intérprete.
+- Listado de álbumes ordenados por género musical.
+- Búsqueda de álbum por nombre del álbum.
 
 
 
