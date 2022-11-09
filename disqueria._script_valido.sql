@@ -91,5 +91,5 @@ insert into album values (null,1234568,'Las Cosas Que Vives',1,1,12,3,1,'1996-01
 insert into album values (null,1234569,'Primavera',2,5,10,1,1,'1993-01-01',2500.45,25,'Primavera.jpg');
 insert into album values (null,1234570,'El Piano de América',2,5,10,1,1,'1994-01-01',2300.50,35,'sin_imagen.png');
 insert into album values (null,1234571,'Ballade pour Adelline',3,5,10,1,1,'1994-01-01',1300.50,15,'ballade_pour_adelline.jpg');
-insert into album values (null,1234572,'Romances',15,5,10,1,1,'2010-02-04',1500.50,40,'romances_luis_miguel.jpg');
-insert into album values (null,1234573,'De Pura Cepa',8,2,15,1,1,'2012-02-04',1750.50,60,'de_pura_cepa_el_chaqueño.jpg');
+insert into album values (null,1234572,'Romances',15,3,10,1,1,'2010-02-04',1500.50,40,'romances_luis_miguel.jpg');
+insert into album values (null,1234573,'De Pura Cepa',8,4,15,1,1,'2012-02-04',1750.50,60,'de_pura_cepa_el_chaqueño.jpg');
